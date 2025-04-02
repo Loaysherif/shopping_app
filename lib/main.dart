@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/views/signup_page.dart';
-import 'views/home_page.dart';
-
 void main() {
   runApp(const MyApp());
 }
