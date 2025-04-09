@@ -105,7 +105,13 @@ class _SignupPageState extends State<SignupPage> {
                             ) {
                               return FadeTransition(
                                 opacity: animation,
-                                child: child,
+                                child: FadeTransition(
+                                  opacity: Tween<double>(
+                                    begin: 1.0,
+                                    end: 0.0,
+                                  ).animate(secondaryAnimation),
+                                  child: child,
+                                ),
                               );
                             },
                           ),
