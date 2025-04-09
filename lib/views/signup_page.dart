@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/views/home_page.dart';
 import 'package:shopping_app/views/login_page.dart';
 import 'package:shopping_app/widgets/customTextformfield.dart';
 import 'package:shopping_app/widgets/custom_text.dart';
@@ -84,19 +85,30 @@ class _SignupPageState extends State<SignupPage> {
 
                 // SignUp button to submit the form
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // If the form is valid, proceed with the action
                     if (_formKey.currentState!.validate()) {
-                      // Show a snack bar indicating data is being processed
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Processing Data')),
-                      );
-
+                      await myDialog();
                       // Delay navigation to simulate data processing
-                      Future.delayed(Duration(seconds: 2), () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                      await Future.delayed(Duration(seconds: 2), () {
+                        Navigator.of(context).pushReplacement(
+                          PageRouteBuilder(
+                            transitionDuration: Duration(milliseconds: 800),
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    MyHomePage(),
+                            transitionsBuilder: (
+                              context,
+                              animation,
+                              secondaryAnimation,
+                              child,
+                            ) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                          ),
                         );
                       });
 
@@ -119,6 +131,26 @@ class _SignupPageState extends State<SignupPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> myDialog() async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Hello'),
+          content: Text("welcome to app"),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
