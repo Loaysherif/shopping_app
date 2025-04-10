@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_app/widgets/PageViewItems.dart';
 import '../widgets/custom_text.dart';
@@ -18,27 +19,28 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const CustomText(
-          text: "Shopping App",
+        title: CustomText(
+          text: tr("Shopping App"),
           fontSize: 32,
           fontWeight: FontWeight.bold,
         ),
+        actions: [
+          IconButton(icon: Icon(Icons.language), onPressed: changeLanguage),
+        ],
       ),
       body: SingleChildScrollView(
-        // padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Section: Our Products
-            const CustomText(
-              text: "Our Products",
+            CustomText(
+              text: tr("our_products"),
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
             const SizedBox(height: 16),
             SizedBox(
               height: 250,
-              // PageView scrolls horizontally by default
               child: PageView(
                 children: const [
                   PageViewItems(
@@ -59,19 +61,29 @@ class _MyHomePageState extends State<MyHomePage> {
             const ProductsGrid(),
             const SizedBox(height: 16),
             // Section: Hot Offers (Horizontal ListView)
-            const CustomText(
-              text: "Hot Offers",
+            CustomText(
+              text: tr("hot_offers"),
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
             const SizedBox(height: 8),
             const HotOffersList(),
             const SizedBox(height: 16),
-            // Button to navigate to All Products Page
-            //
           ],
         ),
       ),
     );
+  }
+
+  // دالة تغيير اللغة
+  void changeLanguage() {
+    Locale currentLocale = context.locale;
+    if (currentLocale.languageCode == 'en' &&
+        currentLocale.countryCode == 'US') {
+      EasyLocalization.of(context)!.setLocale(Locale('ar', 'EG'));
+    } else {
+      EasyLocalization.of(context)!.setLocale(Locale('en', 'US'));
+    }
+    setState(() {}); // تحديث الواجهة بعد تغيير اللغة
   }
 }

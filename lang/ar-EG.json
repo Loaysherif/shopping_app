@@ -1,0 +1,35 @@
+{
+    "hello": "مرحباً",
+    "welcome": "أهلاً بك في تطبيقنا",
+    "login": "تسجيل الدخول",
+    "signup": "التسجيل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "name": "الاسم",
+    "remember_me": "تذكرني",
+    "forgot_password": "هل نسيت كلمة المرور؟",
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "language": "اللغة",
+    "settings": "الإعدادات",
+    "home": "الرئيسية",
+    "profile": "الملف الشخصي",
+    "logout": "تسجيل الخروج",
+    "error_occurred": "حدث خطأ. الرجاء المحاولة مرة أخرى.",
+    "success": "نجاح!",
+    "loading": "جاري التحميل...",
+    "change_language": "تغيير اللغة",
+    "reset_password": "إعادة تعيين كلمة المرور",
+    "change_password": "تغيير كلمة المرور",
+    "passwords don't match": "كلمتين المرور غير متطابقين",
+    "please_wait": "يرجى الانتظار...",
+    "our_products": "منتجاتنا",
+    "hot_offers": "أحدث العروض",
+    "Shopping App":"تطبيق التسوق",
+    "Invalid Data":"بيانات غير صحيحه"
+
+
+      
+  }
+  
